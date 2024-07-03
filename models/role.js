@@ -1,0 +1,4 @@
+class Role {
+    roleid;
+    label;
+}
