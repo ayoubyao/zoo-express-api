@@ -1,7 +1,7 @@
 {
   "name": "zoo-api-express",
   "engines": {
-    "node": "20",
+    "node": "18",
     "npm": "6"
   },
   "scripts": {
