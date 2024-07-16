@@ -50,6 +50,6 @@ app.use((err, req, res, next) => {
 
 
 
-app.listen(port, () => {
-  console.log(`http://localhost:${port}`);
+app.listen(() => {
+  console.log(`Server started`);
 });
