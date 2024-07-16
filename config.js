@@ -1,9 +1,9 @@
 const config = {
   db: {
-    host: "127.0.0.1",
-    user: "root",
-    password: "",
-    database: "zoodb",
+    host: "zoo-express-1970.mysql.b.osc-fr1.scalingo-dbs.com",
+    user: "ayoubyao",
+    password: "Ayoub2002",
+    database: "zoo_express_1970",
     connectTimeout: 60000
   },
   listPerPage: 10,
