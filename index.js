@@ -13,7 +13,6 @@ const service = require("./routes/service");
 const utilisateur = require("./routes/utilisateur");
 
 const corsOptions = {
-  origin: 'https://localhost',
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
