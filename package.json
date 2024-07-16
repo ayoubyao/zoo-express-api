@@ -2,7 +2,7 @@
   "name": "zoo-api-express",
   "engines": {
     "node": "18",
-    "npm": "6"
+    "npm": "10"
   },
   "scripts": {
     "start": "node index.js"
