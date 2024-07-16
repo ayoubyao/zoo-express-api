@@ -47,9 +47,6 @@ app.use((err, req, res, next) => {
   return;
 });
 
-
-
-
-app.listen(() => {
-  console.log(`Server started`);
+app.listen(port, () => {
+  console.log(`http://localhost:${port}`);
 });
