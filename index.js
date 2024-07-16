@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require('cors');
 const app = express();
-const port = 3010;
+const port = process.env.PORT;
 const animal = require("./routes/animal");
 const avis = require("./routes/avis");
 const habitat = require("./routes/habitat");
@@ -48,5 +48,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log(`http://localhost:${port}`);
+  console.log(`Server started!`);
 });
