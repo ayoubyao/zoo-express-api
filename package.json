@@ -1,4 +1,9 @@
 {
+  "name": "zoo-api-express",
+  "engines": {
+    "node": "20",
+    "npm": "6"
+  },
   "scripts": {
     "start": "node index.js"
   },
