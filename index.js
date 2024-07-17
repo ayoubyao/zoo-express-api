@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require('cors');
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3010;
 const animal = require("./routes/animal");
 const avis = require("./routes/avis");
 const habitat = require("./routes/habitat");

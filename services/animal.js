@@ -7,8 +7,7 @@ const router = express.Router();
 
 
 // requetes base de donnees
-async function selectAll()
-{
+async function selectAll() {
   const requete = "SELECT * FROM animal";
 
   try {
@@ -19,7 +18,7 @@ async function selectAll()
     let messageError = "error when getting all animals : " + error;
     return messageError;
   }
-  
+
 }
 
 async function create(animal) {
@@ -73,7 +72,7 @@ async function select(id) {
 }
 
 async function modify(animal) {
-  const requete = "UPDATE animal SET path = '" + animal.path + "' WHERE animal_id = " + animal.animalid;
+  const requete = "UPDATE animal SET prenom = '" + animal.prenom + " WHERE animal_id = " + animal.animalid;
   const result = await db.query(
     requete
   );
