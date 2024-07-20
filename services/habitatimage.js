@@ -42,15 +42,15 @@ async function create(habitatimage) {
 }
 
 async function remove(id) {
-  const requete = "DELETE FROM habitatimage WHERE habitatimageid = " + id;
+  const requete = "DELETE FROM habitatimage WHERE id_habita_image = " + id;
   const result = await db.query(
     requete
   );
 
-  let message = 'Error in creating habitatimage';
+  let message = 'Error in removing habitatimage';
 
   if (result.affectedRows) {
-    message = 'habitatimage created successfully';
+    message = 'habitatimage deleting successfully';
   }
 
   return { message };
@@ -58,7 +58,7 @@ async function remove(id) {
 }
 
 async function select(id) {
-  const requete = "SELECT * FROM habitatimage WHERE submenuid = ?";
+  const requete = "SELECT * FROM habitatimage WHERE id_habita_image = ?";
   const result = await db.query(
     requete, [id]
   );
@@ -74,7 +74,7 @@ async function select(id) {
 }
 
 async function modify(habitatimage) {
-  const requete = "UPDATE habitatimage SET path = '" + habitatimage.path + "' WHERE habitatimageid = " + habitatimage.habitatimageid;
+  const requete = "UPDATE habitatimage SET path = '" + habitatimage.path + "' WHERE id_habita_image = " + habitatimage.id_habita_image;
   const result = await db.query(
     requete
   );
@@ -82,7 +82,7 @@ async function modify(habitatimage) {
   let message = result;
 
   if (result.affectedRows) {
-    message = 'habitatimage created successfully';
+    message = 'habitatimage modified successfully';
   }
 
   return { message };

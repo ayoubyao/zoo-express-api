@@ -40,15 +40,15 @@ async function create(avis) {
 }
 
 async function remove(id) {
-  const requete = "DELETE FROM avis WHERE avisid = " + id;
+  const requete = "DELETE FROM avis WHERE avis_id = " + id;
   const result = await db.query(
     requete
   );
 
-  let message = 'Error in creating avis';
+  let message = 'Error in deleting avis';
 
   if (result.affectedRows) {
-    message = 'avis created successfully';
+    message = 'avis deleted successfully';
   }
 
   return { message };
@@ -56,7 +56,7 @@ async function remove(id) {
 }
 
 async function select(id) {
-  const requete = "SELECT * FROM avis WHERE submenuid = ?";
+  const requete = "SELECT * FROM avis WHERE avis_id = ?";
   const result = await db.query(
     requete, [id]
   );
@@ -72,7 +72,7 @@ async function select(id) {
 }
 
 async function modify(avis) {
-  const requete = "UPDATE avis SET path = '" + avis.path + "' WHERE avisid = " + avis.avisid;
+  const requete = "UPDATE avis SET isvisible = '" + avis.isvisible + "' commentaire = '" + avis.commentaire + "' pseudo = '" + avis.pseudo + "'  path = '" + avis.path + "' WHERE avis_id = " + avis.avisid;
   const result = await db.query(
     requete
   );
@@ -80,7 +80,7 @@ async function modify(avis) {
   let message = result;
 
   if (result.affectedRows) {
-    message = 'avis created successfully';
+    message = 'avis updated successfully';
   }
 
   return { message };

@@ -42,15 +42,15 @@ async function create(service) {
 }
 
 async function remove(id) {
-  const requete = "DELETE FROM service WHERE serviceid = " + id;
+  const requete = "DELETE FROM service WHERE service_id = " + id;
   const result = await db.query(
     requete
   );
 
-  let message = 'Error in creating service';
+  let message = 'Error in deleting service';
 
   if (result.affectedRows) {
-    message = 'service created successfully';
+    message = 'service deleted successfully';
   }
 
   return { message };
@@ -58,7 +58,7 @@ async function remove(id) {
 }
 
 async function select(id) {
-  const requete = "SELECT * FROM service WHERE submenuid = ?";
+  const requete = "SELECT * FROM service WHERE service_id = ?";
   const result = await db.query(
     requete, [id]
   );
@@ -66,7 +66,7 @@ async function select(id) {
   let message = result;
 
   if (result.affectedRows) {
-    message = 'service created successfully';
+    message = 'service selcted successfully';
   }
 
   return { message };
@@ -74,7 +74,7 @@ async function select(id) {
 }
 
 async function modify(service) {
-  const requete = "UPDATE service SET path = '" + service.path + "' WHERE serviceid = " + service.serviceid;
+  const requete = "UPDATE service SET description = '" + service.description + "' nom = '" + service.nom + "' WHERE service_id = " + service.service_id;
   const result = await db.query(
     requete
   );
@@ -82,7 +82,7 @@ async function modify(service) {
   let message = result;
 
   if (result.affectedRows) {
-    message = 'service created successfully';
+    message = 'service updated successfully';
   }
 
   return { message };

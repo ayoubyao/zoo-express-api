@@ -42,15 +42,15 @@ async function create(role) {
 }
 
 async function remove(id) {
-  const requete = "DELETE FROM role WHERE roleid = " + id;
+  const requete = "DELETE FROM role WHERE role_id = " + id;
   const result = await db.query(
     requete
   );
 
-  let message = 'Error in creating role';
+  let message = 'Error in deleting role';
 
   if (result.affectedRows) {
-    message = 'role created successfully';
+    message = 'role deleted successfully';
   }
 
   return { message };
@@ -58,7 +58,7 @@ async function remove(id) {
 }
 
 async function select(id) {
-  const requete = "SELECT * FROM role WHERE submenuid = ?";
+  const requete = "SELECT * FROM role WHERE role_id = ?";
   const result = await db.query(
     requete, [id]
   );
@@ -66,7 +66,7 @@ async function select(id) {
   let message = result;
 
   if (result.affectedRows) {
-    message = 'role created successfully';
+    message = 'role successfully';
   }
 
   return { message };
@@ -74,7 +74,7 @@ async function select(id) {
 }
 
 async function modify(role) {
-  const requete = "UPDATE role SET path = '" + role.path + "' WHERE roleid = " + role.roleid;
+  const requete = "UPDATE role SET label = '" + role.label + "' WHERE role_id = " + role.role_id;
   const result = await db.query(
     requete
   );
@@ -82,7 +82,7 @@ async function modify(role) {
   let message = result;
 
   if (result.affectedRows) {
-    message = 'role created successfully';
+    message = 'role modified successfully';
   }
 
   return { message };

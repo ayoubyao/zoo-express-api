@@ -42,15 +42,15 @@ async function create(utilisateur) {
 }
 
 async function remove(id) {
-  const requete = "DELETE FROM utilisateur WHERE utilisateurid = " + id;
+  const requete = "DELETE FROM utilisateur WHERE id = " + id;
   const result = await db.query(
     requete
   );
 
-  let message = 'Error in creating utilisateur';
+  let message = 'Error in deleting utilisateur';
 
   if (result.affectedRows) {
-    message = 'utilisateur created successfully';
+    message = 'utilisateur deleted successfully';
   }
 
   return { message };
@@ -58,7 +58,7 @@ async function remove(id) {
 }
 
 async function select(id) {
-  const requete = "SELECT * FROM utilisateur WHERE submenuid = ?";
+  const requete = "SELECT * FROM utilisateur WHERE id = ?";
   const result = await db.query(
     requete, [id]
   );
@@ -66,7 +66,7 @@ async function select(id) {
   let message = result;
 
   if (result.affectedRows) {
-    message = 'utilisateur created successfully';
+    message = 'utilisateur selected successfully';
   }
 
   return { message };
@@ -74,7 +74,7 @@ async function select(id) {
 }
 
 async function modify(utilisateur) {
-  const requete = "UPDATE utilisateur SET path = '" + utilisateur.path + "' WHERE utilisateurid = " + utilisateur.utilisateurid;
+  const requete = "UPDATE utilisateur SET prenom = '" + utilisateur.prenom + "' nom = '" + utilisateur.nom + "' password = '" + utilisateur.password + "' description = '" + utilisateur.description + "' WHERE id = " + utilisateur.id;
   const result = await db.query(
     requete
   );
@@ -82,7 +82,7 @@ async function modify(utilisateur) {
   let message = result;
 
   if (result.affectedRows) {
-    message = 'utilisateur created successfully';
+    message = 'utilisateur modified successfully';
   }
 
   return { message };

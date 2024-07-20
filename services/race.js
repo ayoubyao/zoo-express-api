@@ -42,15 +42,15 @@ async function create(race) {
 }
 
 async function remove(id) {
-  const requete = "DELETE FROM race WHERE raceid = " + id;
+  const requete = "DELETE FROM race WHERE race_id = " + id;
   const result = await db.query(
     requete
   );
 
-  let message = 'Error in creating race';
+  let message = 'Error in deleting race';
 
   if (result.affectedRows) {
-    message = 'race created successfully';
+    message = 'race deleted successfully';
   }
 
   return { message };
@@ -58,7 +58,7 @@ async function remove(id) {
 }
 
 async function select(id) {
-  const requete = "SELECT * FROM race WHERE submenuid = ?";
+  const requete = "SELECT * FROM race WHERE race_id = ?";
   const result = await db.query(
     requete, [id]
   );
@@ -74,7 +74,7 @@ async function select(id) {
 }
 
 async function modify(race) {
-  const requete = "UPDATE race SET path = '" + race.path + "' WHERE raceid = " + race.raceid;
+  const requete = "UPDATE race SET label = '" + race.label + "' SET path = '" + race.path + "' WHERE race_id = " + race.race_id;
   const result = await db.query(
     requete
   );
@@ -82,7 +82,7 @@ async function modify(race) {
   let message = result;
 
   if (result.affectedRows) {
-    message = 'race created successfully';
+    message = 'race modified successfully';
   }
 
   return { message };
