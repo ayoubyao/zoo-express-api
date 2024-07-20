@@ -58,7 +58,7 @@ async function remove(id) {
 }
 
 async function select(id) {
-  const requete = "SELECT * FROM habitat WHERE submenuid = ?";
+  const requete = "SELECT * FROM habitat WHERE habitat_id = ?";
   const result = await db.query(
     requete, [id]
   );
@@ -74,7 +74,7 @@ async function select(id) {
 }
 
 async function modify(habitat) {
-  const requete = "UPDATE habitat SET path = '" + habitat.path + "' WHERE habitatid = " + habitat.habitatid;
+  const requete = "UPDATE habitat SET image_id = '" + habitat.image_id + "' commentaire_habitat = '" + habitat.commentaire_habitat + "' description = '" + habitat.description + "' nom = '" + habitat.nom + "' path = '" + habitat.path + "' WHERE habitat_id = " + habitat.habitatid;
   const result = await db.query(
     requete
   );
@@ -82,7 +82,7 @@ async function modify(habitat) {
   let message = result;
 
   if (result.affectedRows) {
-    message = 'habitat created successfully';
+    message = 'habitat modified successfully';
   }
 
   return { message };

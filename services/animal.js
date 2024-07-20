@@ -46,10 +46,10 @@ async function remove(id) {
     requete
   );
 
-  let message = 'Error in creating animal';
+  let message = 'Error in deleting animal';
 
   if (result.affectedRows) {
-    message = 'animal created successfully';
+    message = 'animal deleted successfully';
   }
 
   return { message };
@@ -73,7 +73,7 @@ async function select(id) {
 }
 
 async function modify(animal) {
-  const requete = "UPDATE animal SET path = '" + animal.path + "' WHERE animal_id = " + animal.animalid;
+  const requete = "UPDATE animal SET etat = '" + animal.etat + "' prenom = '" + animal.prenom + "' race_id = '" + animal.race_id + "' WHERE animal_id = " + animal.animal_id;
   const result = await db.query(
     requete
   );
@@ -81,7 +81,7 @@ async function modify(animal) {
   let message = result;
 
   if (result.affectedRows) {
-    message = 'animal created successfully';
+    message = 'animal updated successfully';
   }
 
   return { message };

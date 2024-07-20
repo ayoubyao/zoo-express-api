@@ -42,15 +42,15 @@ async function create(image) {
 }
 
 async function remove(id) {
-  const requete = "DELETE FROM image WHERE imageid = " + id;
+  const requete = "DELETE FROM image WHERE image_id = " + id;
   const result = await db.query(
     requete
   );
 
-  let message = 'Error in creating image';
+  let message = 'Error in deleting image';
 
   if (result.affectedRows) {
-    message = 'image created successfully';
+    message = 'image deleted successfully';
   }
 
   return { message };
@@ -58,7 +58,7 @@ async function remove(id) {
 }
 
 async function select(id) {
-  const requete = "SELECT * FROM image WHERE submenuid = ?";
+  const requete = "SELECT * FROM image WHERE image_id = ?";
   const result = await db.query(
     requete, [id]
   );
@@ -74,7 +74,7 @@ async function select(id) {
 }
 
 async function modify(image) {
-  const requete = "UPDATE image SET path = '" + image.path + "' WHERE imageid = " + image.imageid;
+  const requete = "UPDATE image SET image_data = '" + image.image_data + "' path = '" + image.path + "' WHERE image_id = " + image.image_id;
   const result = await db.query(
     requete
   );
@@ -82,7 +82,7 @@ async function modify(image) {
   let message = result;
 
   if (result.affectedRows) {
-    message = 'image created successfully';
+    message = 'image modified successfully';
   }
 
   return { message };

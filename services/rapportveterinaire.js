@@ -42,15 +42,15 @@ async function create(rapportveterinaire) {
 }
 
 async function remove(id) {
-  const requete = "DELETE FROM rapportveterinaire WHERE rapportveterinaireid = " + id;
+  const requete = "DELETE FROM rapportveterinaire WHERE rapport_veterinaire_id = " + id;
   const result = await db.query(
     requete
   );
 
-  let message = 'Error in creating rapportveterinaire';
+  let message = 'Error in deleting rapportveterinaire';
 
   if (result.affectedRows) {
-    message = 'rapportveterinaire created successfully';
+    message = 'rapportveterinaire deleted successfully';
   }
 
   return { message };
@@ -58,7 +58,7 @@ async function remove(id) {
 }
 
 async function select(id) {
-  const requete = "SELECT * FROM rapportveterinaire WHERE submenuid = ?";
+  const requete = "SELECT * FROM rapportveterinaire WHERE rapport_veterinaire_id = ?";
   const result = await db.query(
     requete, [id]
   );
@@ -74,7 +74,7 @@ async function select(id) {
 }
 
 async function modify(rapportveterinaire) {
-  const requete = "UPDATE rapportveterinaire SET path = '" + rapportveterinaire.path + "' WHERE rapportveterinaireid = " + rapportveterinaire.rapportveterinaireid;
+  const requete = "UPDATE rapportveterinaire SET detail = '" + rapportveterinaire.detail + "' date = '" + rapportveterinaire.date + "' WHERE rapport_veterinaire_id = " + rapportveterinaire.rapport_veterinaire_id;
   const result = await db.query(
     requete
   );
@@ -82,7 +82,7 @@ async function modify(rapportveterinaire) {
   let message = result;
 
   if (result.affectedRows) {
-    message = 'rapportveterinaire created successfully';
+    message = 'rapportveterinaire modified successfully';
   }
 
   return { message };
