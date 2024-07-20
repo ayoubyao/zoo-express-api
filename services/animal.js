@@ -73,7 +73,6 @@ async function select(id) {
 
 async function modify(animal) {
   const requete = "UPDATE animal SET etat = '" + animal.etat + "' prenom = '" + animal.prenom + "' race_id = '" + animal.race_id + "' WHERE animal_id = " + animal.animal_id;
-  const requete = "UPDATE animal SET prenom = '" + animal.prenom + " WHERE animal_id = " + animal.animalid;
   const result = await db.query(
     requete
   );
