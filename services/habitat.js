@@ -8,9 +8,8 @@ const router = express.Router();
 
 
 // requetes base de donnees
-async function selectAll()
-{
-  const requete = "SELECT * FROM habitat";
+async function selectAll() {
+  const requete = "SELECT * FROM habitat,image WHERE habitat.image_id = image.image_id";
 
   try {
     const result = await db.query(requete);
@@ -20,7 +19,7 @@ async function selectAll()
     let messageError = "error when getting all habitat : " + error;
     return messageError;
   }
-  
+
 }
 
 async function create(habitat) {
