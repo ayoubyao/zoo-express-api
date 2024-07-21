@@ -55,6 +55,16 @@ async function remove(id) {
 
 }
 
+async function selectByHabitat(idhabitat)
+{
+  const requete = "SELECT * FROM animal,image WHERE animal.image_id = image.image_id and habitat_id = ?";
+  const animaux = await db.query(
+    requete, [idhabitat]
+  );
+
+  return { animaux };
+}
+
 async function select(id) {
   const requete = "SELECT * FROM animal WHERE animal_id = ?";
   const result = await db.query(
@@ -91,5 +101,6 @@ module.exports = {
   remove,
   select,
   modify,
-  selectAll
+  selectAll,
+  selectByHabitat
 }

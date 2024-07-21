@@ -57,18 +57,13 @@ async function remove(id) {
 }
 
 async function select(id) {
-  const requete = "SELECT * FROM habitat WHERE habitat_id = ?";
+  const requete = "SELECT * FROM habitat,image WHERE image.image_id = habitat.image_id and habitat_id = ?";
   const result = await db.query(
     requete, [id]
   );
 
-  let message = result;
-
-  if (result.affectedRows) {
-    message = 'habitat created successfully';
-  }
-
-  return { message };
+  let data = result[0]
+  return { data };
 
 }
 

@@ -10,7 +10,7 @@ const router = express.Router();
 
 async function selectAll()
 {
-  const requete = "SELECT * FROM service";
+  const requete = "SELECT * FROM service,image WHERE service.image_id = image.image_id";
 
   try {
     const result = await db.query(requete);
@@ -58,18 +58,13 @@ async function remove(id) {
 }
 
 async function select(id) {
-  const requete = "SELECT * FROM service WHERE service_id = ?";
+  const requete = "SELECT * FROM service,image WHERE image.image_id = service.image_id and service_id = ?";
   const result = await db.query(
     requete, [id]
   );
 
-  let message = result;
-
-  if (result.affectedRows) {
-    message = 'service selcted successfully';
-  }
-
-  return { message };
+  let service = result[0]
+  return { service };
 
 }
 

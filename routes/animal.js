@@ -52,6 +52,15 @@ router.get('/:id', authenticateToken, async function (req, res,) {
   }
 });
 
+router.get('/habitat/:idhabitat', authenticateToken, async function (req, res) {
+    try {
+      res.json(await animal.selectByHabitat(req.params.idhabitat));
+    } catch (err) {
+      console.error(`Error while reading animal`, err.message);
+      next(err);
+    }
+
+})
 
 router.delete('/:id', async function (req, res, next) {
   try {

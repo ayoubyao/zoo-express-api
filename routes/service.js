@@ -35,7 +35,7 @@ router.post('/', authenticateToken, async function (req, res, next) {
 /* GET all services */
 router.get('/', authenticateToken, async function (req, res,) {
   try {
-    res.json(await service.selectAll());
+    res.json(await services.selectAll());
   } catch (err) {
     console.error(`Error while reading service`, err.message);
     next(err);
