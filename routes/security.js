@@ -17,7 +17,6 @@ const authenticateToken = (req, res, next) => {
       return res.sendStatus(403);
     }
     req.user = user;
-    next();
   });
 };
 
@@ -36,7 +35,6 @@ router.post('/', async (req, res) => {
 
   } catch (err) {
     console.error(`Error while getting menu `, err.message);
-    next(err);
   }
 
 
