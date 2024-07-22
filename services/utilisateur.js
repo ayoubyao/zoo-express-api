@@ -10,7 +10,7 @@ const router = express.Router();
 
 async function selectAll()
 {
-  const requete = "SELECT * FROM utilisateur";
+  const requete = "SELECT * FROM utilisateur where utilisateur.role_id <> 1";
 
   try {
     const result = await db.query(requete);
@@ -63,18 +63,21 @@ async function select(id) {
     requete, [id]
   );
 
-  let message = result;
+  if(result.length > 0 ) {
+    let user = result[0];
 
-  if (result.affectedRows) {
-    message = 'utilisateur selected successfully';
+    return { user };
   }
+  
+  
+  message = "no user found"
 
   return { message };
 
 }
 
 async function modify(utilisateur) {
-  const requete = "UPDATE utilisateur SET prenom = '" + utilisateur.prenom + "' nom = '" + utilisateur.nom + "' password = '" + utilisateur.password + "' description = '" + utilisateur.description + "' WHERE id = " + utilisateur.id;
+  const requete = "UPDATE utilisateur SET prenom = '" + utilisateur.prenom + "', nom = '" + utilisateur.nom +  "', role_id = " + utilisateur.role_id + " WHERE id = " + utilisateur.id;
   const result = await db.query(
     requete
   );
