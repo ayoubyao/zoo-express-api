@@ -1,9 +1,9 @@
 const config = {
   db: {
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "zoodb",
+    host: "db5016107390.hosting-data.io",
+    user: "dbu5320643",
+    password: process.env.DATABASEPASSWORD,
+    database: "dbs13114825",
     connectTimeout: 60000
   },
   listPerPage: 10,
