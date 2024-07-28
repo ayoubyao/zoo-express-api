@@ -1,6 +1,6 @@
 const config = {
   db: {
-    host: "108.181.197.182",
+    host: "mysql-179289-0.cloudclusters.net",
     user: "alasquality",
     port: 10036,
     password: process.env.DATABASEPASSWORD,
