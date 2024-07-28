@@ -1,9 +1,9 @@
 const config = {
   db: {
-    host: "mysql-179289-0.cloudclusters.net",
+    host: "108.181.197.182",
     user: "alasquality",
     port: 10036,
-    password: "Zooecf1234",
+    password: process.env.DATABASEPASSWORD,
     database: "zoodb",
     connectTimeout: 60000
   },
